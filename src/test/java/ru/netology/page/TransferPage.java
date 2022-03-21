@@ -17,10 +17,10 @@ public class TransferPage {
         form.shouldBe(Condition.visible);
     }
 
-    public DashboardPage transferMoney(int amount, DataHelper.CardsNumber from) {
+    public DashboardPage transferMoney(int amount, DataHelper.Card from) {
         String amountString = Integer.toString(amount);
         amountField.setValue(amountString);
-        fromField.setValue(from.getSecondCardNumber());
+        fromField.setValue(from.getNumber());
         transferButton.click();
         return new DashboardPage();
     }

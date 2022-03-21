@@ -40,16 +40,10 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public TransferPage makeTransfer(DataHelper.CardsId cards) {
-        getCardElementById(cards.getFirstCard()).$("[data-test-id=action-deposit]").click();
+    public TransferPage makeTransfer(DataHelper.Card card) {
+        getCardElementById(card.getId()).$("[data-test-id=action-deposit]").click();
         return new TransferPage();
     }
 
-    public void checkBalance(int balanceStartFrom, int balanceStartTo,  int amount, String FromId, String ToId ) {
-        String expectedFrom = Integer.toString(balanceStartFrom + amount);
-        getCardElementById(FromId).should(matchText(expectedFrom));
-        String expectedTo = Integer.toString(balanceStartTo - amount);
-        getCardElementById(ToId).should(matchText(expectedTo));
-    }
 
 }
